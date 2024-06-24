@@ -1,0 +1,2 @@
+class LabelImg < ApplicationRecord
+end

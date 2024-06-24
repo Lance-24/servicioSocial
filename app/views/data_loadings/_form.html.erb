@@ -1,0 +1,31 @@
+<%= form_with(model: @data_loading, local: true, html: { multipart: true }) do |form| %>
+    <div class="form-group">
+      <%= form.label :ahf %>
+      <%= form.text_field :ahf, class: 'form-control' %>
+    </div>
+  
+    <div class="form-group">
+      <%= form.label :nombre %>
+      <%= form.text_field :nombre, class: 'form-control' %>
+    </div>
+  
+    <div class="form-group">
+      <%= form.label :otros_campos %>
+      <%= form.text_field :otros_campos, class: 'form-control' %>
+    </div>
+  
+    <div class="form-group">
+      <%= form.label :mastografia_images %>
+      <%= form.file_field :mastografia_images, multiple: true, class: 'form-control' %>
+    </div>
+  
+    <div class="form-group">
+      <%= form.label :ultrasonido_images %>
+      <%= form.file_field :ultrasonido_images, multiple: true, class: 'form-control' %>
+    </div>
+  
+    <div class="actions">
+      <%= form.submit 'Guardar', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+  

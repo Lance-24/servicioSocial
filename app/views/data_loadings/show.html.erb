@@ -1,0 +1,20 @@
+<!-- app/views/data_loadings/show.html.erb -->
+<h1>Detalles del Data Loading</h1>
+
+<p>
+  <strong>AHF:</strong>
+  <%= @data_loading.ahf %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @data_loading.nombre %>
+</p>
+
+<p>
+  <strong>Otros Campos:</strong>
+  <%= @data_loading.otros_campos %>
+</p>
+
+<%= link_to 'Editar', edit_data_loading_path(@data_loading) %> |
+<%= link_to 'Volver', data_loadings_path %>

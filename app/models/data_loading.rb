@@ -1,0 +1,2 @@
+class DataLoading < ApplicationRecord
+end

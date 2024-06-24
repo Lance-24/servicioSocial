@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
-  # Configuración completa de devise_for para usuarios
-  devise_for :users, controllers: {
-    registrations: 'registrations' # Controlador personalizado para las acciones de registro
-  }
+  devise_for :users
 
-  # Otras rutas de tu aplicación
   root "main#Home"
+
+  # Rutas personalizadas para las acciones específicas
+  get 'dataLoading', to: 'main#dataLoading', as: 'dataLoading'
+  get 'labelImg', to: 'main#labelImg', as: 'labelImg'
+  get 'test', to: 'main#test', as: 'test'
+
+  # Rutas RESTful para data_loadings
+  resources :data_loadings do
+    post 'upload_mastografia_images', on: :collection  # Ruta personalizada para subir imágenes de mastografía
+    post 'upload_ultrasonido_images', on: :collection  # Ruta personalizada para subir imágenes de ultrasonido
+  end
 end

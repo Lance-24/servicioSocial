@@ -1,0 +1,26 @@
+<!-- app/views/registros/show.html.erb -->
+<div class="row">
+  <div class="col-md-3">
+    <%= render 'form', registro: @DataLoading %>
+  </div>
+  <div class="col-md-7">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="mastografia-tab" data-bs-toggle="tab" data-bs-target="#mastografia" type="button" role="tab" aria-controls="mastografia" aria-selected="true">Mastografía</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="ultrasonido-tab" data-bs-toggle="tab" data-bs-target="#ultrasonido" type="button" role="tab" aria-controls="ultrasonido" aria-selected="false">Ultrasonido</button>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="mastografia" role="tabpanel" aria-labelledby="mastografia-tab">
+        <!-- Contenido de Mastografía -->
+        <!-- Agrega aquí el código para mostrar las imágenes de Mastografía -->
+      </div>
+      <div class="tab-pane fade" id="ultrasonido" role="tabpanel" aria-labelledby="ultrasonido-tab">
+        <!-- Contenido de Ultrasonido -->
+        <!-- Agrega aquí el código para mostrar las imágenes de Ultrasonido -->
+      </div>
+    </div>
+  </div>
+</div>

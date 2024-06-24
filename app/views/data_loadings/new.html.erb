@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Page</title>
+  <style>
+    /* Estilos CSS */
+    .container {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .toppane {
+      width: 100%;
+      height: 100px;
+      background-color: #4da6ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 24px;
+    }
+
+    .d-flex {
+      display: flex;
+      flex: 1; /* Para que ocupe todo el espacio disponible verticalmente */
+    }
+
+    .leftpane {
+      width: 25%;
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
+
+    .rightpane {
+      width: 75%;
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="toppane">Cargar Información</div>
+    <div class="d-flex">
+      <div class="leftpane">
+        <h2>Campos del Formulario</h2>
+        <%= form_with(model: @data_loading, local: true) do |form| %>
+          <!-- AHF -->
+          <div class="form-group">
+            <%= form.label :ahf %>
+            <%= form.text_field :ahf, class: 'form-control' %>
+          </div>
+
+          <!-- Nombre -->
+          <div class="form-group">
+            <%= form.label :nombre %>
+            <%= form.text_field :nombre, class: 'form-control' %>
+          </div>
+
+          <!-- Otros campos -->
+          <div class="form-group">
+            <%= form.label :otros_campos %>
+            <%= form.text_field :otros_campos, class: 'form-control' %>
+          </div>
+
+          <!-- Botón de guardar -->
+          <div class="actions">
+            <%= form.submit 'Guardar', class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="rightpane">
+        <h2>Contenido de Imágenes</h2>
+        <!-- Pestañas para cargar imágenes -->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="mastografia-tab" data-toggle="tab" href="#mastografia" role="tab" aria-controls="mastografia" aria-selected="true">Mastografía</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link" id="ultrasonido-tab" data-toggle="tab" href="#ultrasonido" role="tab" aria-controls="ultrasonido" aria-selected="false">Ultrasonido</a>
+          </li>
+        </ul>
+
+        <!-- Contenido de las pestañas -->
+        <div class="tab-content" id="myTabContent">
+          <!-- Mastografía -->
+          <div class="tab-pane fade show active" id="mastografia" role="tabpanel" aria-labelledby="mastografia-tab">
+            <%= form_tag upload_mastografia_images_data_loadings_path, multipart: true do %>
+              <div class="form-group">
+                <label for="formFileMastografia">Selecciona imágenes para cargar en Mastografía:</label>
+                <input class="form-control" type="file" id="formFileMastografia" name="mastografia_images[]" multiple>
+              </div>
+              <%= submit_tag 'Cargar imágenes', class: 'btn btn-primary' %>
+            <% end %>
+          </div>
+
+          <!-- Ultrasonido -->
+          <div class="tab-pane fade" id="ultrasonido" role="tabpanel" aria-labelledby="ultrasonido-tab">
+            <%= form_tag upload_ultrasonido_images_data_loadings_path, multipart: true do %>
+              <div class="form-group">
+                <label for="formFileUltrasonido">Selecciona imágenes para cargar en Ultrasonido:</label>
+                <input class="form-control" type="file" id="formFileUltrasonido" name="ultrasonido_images[]" multiple>
+              </div>
+              <%= submit_tag 'Cargar imágenes', class: 'btn btn-primary' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Enlazar Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- Enlazar Bootstrap JS (si es necesario para tu aplicación) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
